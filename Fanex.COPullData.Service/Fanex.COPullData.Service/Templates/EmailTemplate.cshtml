@@ -1,0 +1,53 @@
+﻿@{
+    bool hasData = Model.Item1;
+    List<string> fileNames = Model.Item2;    
+}
+@if (hasData)
+{
+    <div>
+        Dear Users, <br/><br/>
+
+        The files:
+        
+        <ul>
+            @foreach (string fileName in fileNames)
+            {
+                <li>@fileName</li>
+            }
+        </ul>
+
+        has/have been sent to you. <br/><br/>
+
+        Please kindly find the attachment for more details. <br/><br/>
+
+        Please contact Starix IT if you can not access or download the report.<br/> <br/>
+
+        Thanks & Best Regards, <br/> <br/>
+
+        Starix IT <br/> <br/>
+        ---------------------------------------------------------------------- <br/>
+        This email is confidential. <br/>
+        If you are not the addressee you may not copy, forward, disclose or use any part of it. <br/>
+        If you have received this message in error, please delete it from your system. <br/>
+        This is an auto-generated email, please do not reply. <br/>
+    </div>
+}
+else
+{
+    <div>
+        Dear Users, <br /><br />
+
+        There is no data available. <br /> <br />
+
+        Please contact Starix IT for more detail.<br /> <br />
+
+        Thanks & Best Regards, <br/> <br/>
+
+        Starix IT <br/> <br/>
+        ---------------------------------------------------------------------- <br/>
+        This email is confidential. <br/>
+        If you are not the addressee you may not copy, forward, disclose or use any part of it. <br/>
+        If you have received this message in error, please delete it from your system. <br/>
+        This is an auto-generated email, please do not reply. <br/>
+    </div>
+}
