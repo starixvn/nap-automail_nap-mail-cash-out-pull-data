@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Functions>
+	<Function SiteId="25" SiteName="CWL">
+		<Setting Key="DBWH_62_Task_JTCashoutTicket_Import" SpName="Task_JTCashoutTicket_Import" DbName="DBWH_62.bodb_Account.dwrs" Timeout="0" />
+	</Function>
+</Functions>

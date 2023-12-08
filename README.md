@@ -1,2 +1,2 @@
-# nap-mail-cash-out-pull-data
+# nap-mail-company-max-payout
 
