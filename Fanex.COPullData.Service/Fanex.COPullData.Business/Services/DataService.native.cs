@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Threading.Tasks;
 
 namespace Fanex.COPullData.Business.Services;
 
@@ -26,27 +27,26 @@ public class DataServiceImp : DataService
 
     public List<COModel> PullData(DateTime startDate, DateTime endDate)
     {
-        var json = GetDataFromApi(startDate, endDate);
+        var json = GetDataFromApi(startDate, endDate).GetAwaiter().GetResult();
         var data = JsonConvert.DeserializeObject<List<COModel>>(json)!;
         var dbs = new List<string> { "DBWH_61", "DBWH_62" };
 
-        dbs.ForEach(db =>
+        foreach (var db in dbs)
         {
             ImportData(db, json);
-        });
+        }
 
         return data;
     }
 
-    private static string GetDataFromApi(DateTime startDate, DateTime endDate)
+    private static async Task<string> GetDataFromApi(DateTime startDate, DateTime endDate)
     {
         var action = $"api/JackTimeProxy/GetReportDataFromJackTime?startDate={startDate}&endDate={endDate}";
         var url = $"{AppConfigService.Config.UrlApi}{action}";
-        var client = new HttpClient();
+        using var client = new HttpClient();
         client.DefaultRequestHeaders.Accept.Clear();
         client.DefaultRequestHeaders.Accept.Add(Media);
-        var rawData = client.GetStringAsync(url).Result;
-        client.Dispose();
+        var rawData = await client.GetStringAsync(url);
 
         return rawData;
     }

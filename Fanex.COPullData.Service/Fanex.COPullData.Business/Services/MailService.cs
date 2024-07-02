@@ -27,7 +27,7 @@ public class MailServiceImp : MailService
         var mail = new Mail
         {
             Title = "ONEworks Auto Generated Report Administrator",
-            Subject = $"Automail Report - Daily JackTime Data Report - {DateTime.Today:yyyy/MM/dd}",
+            Subject = $"Automail Report - Daily JackTime Data Report - {DateTimeOffset.Now.DateTime:yyyy/MM/dd}",
             Body = LoadBody(hasData, shortNames),
             Attachments = hasData ? att : new List<MailAttachment>()
         };
