@@ -4,7 +4,7 @@ namespace Fanex.COPullData.Business.Criteria;
 
 public class CoCommand : NonQueryCommand
 {
-    private string db;
+    private readonly string db;
 
     public CoCommand(string db)
     {
