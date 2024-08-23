@@ -54,7 +54,7 @@ namespace Fanex.COPullData.Business.Services
 
         private static string Save(ExcelPackage excelPackage, DateTime beginDate, DateTime endDate)
         {
-            var path = $"{AppConfigService.Config.Path}/{DateTimeOffset.Now.DateTime.Year}/{DateTimeOffset.Now.DateTime:MM}";
+            var path = $"{AppConfigService.Config.Path}/{DateTime.Today:yyyyMMdd}";
             Directory.CreateDirectory(path);
             var fileName = $"Daily_JackTime_Report_Data_From_{beginDate:yyyy_MM_dd}_To_{endDate:yyyy_MM_dd}.xlsx";
             path += $"/{fileName}";
