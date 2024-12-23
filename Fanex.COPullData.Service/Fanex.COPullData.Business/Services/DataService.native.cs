@@ -29,7 +29,7 @@ public class DataServiceImp : DataService
     {
         var json = GetDataFromApi(startDate, endDate).GetAwaiter().GetResult();
         var data = JsonConvert.DeserializeObject<List<COModel>>(json)!;
-        var dbs = new List<string> { "DBWH_61", "DBWH_62" };
+        var dbs = new List<string> { "DBWH" };
 
         foreach (var db in dbs)
         {
