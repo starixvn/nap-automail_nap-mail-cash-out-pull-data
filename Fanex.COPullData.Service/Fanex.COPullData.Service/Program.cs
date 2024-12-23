@@ -1,4 +1,3 @@
-using Fanex.MailDelivery.Client;
 using Fanex.COPullData.Service;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,7 +14,6 @@ builder.Services.LoadConfiguration();
 builder.Services.SentryRegister();
 builder.Services.FanexDataRegister(builder.Configuration);
 builder.Services.InternalServiceRegister();
-MailClientHandler.Start();
 
 var app = builder.Build();
 

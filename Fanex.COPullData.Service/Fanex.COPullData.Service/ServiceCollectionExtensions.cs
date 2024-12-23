@@ -5,6 +5,7 @@ using Fanex.Data.Repository;
 using Fanex.Data.SqlServer;
 using Fanex.Logging;
 using Fanex.Logging.Sentry.RavenClient;
+using Fanex.MailDelivery.Client;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
@@ -13,7 +14,6 @@ using SharpRaven;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 
 namespace Fanex.COPullData.Service;
 
@@ -45,19 +45,18 @@ public static class ServiceCollectionExtensions
 
     public static void FanexDataRegister(this IServiceCollection services, IConfiguration config)
     {
-        var connections = config.GetSection("ConnectionStrings")
-            .GetChildren()
-            .ToDictionary(
-                x => x.Key,
-                y => new ConnectionConfiguration(y.Key, y.Value)
-            );
-
-        DbSettingProviderManager
-            .StartNewSession()
-            .Use(connections)
-            .WithSqlServer()
-            .UseDefaultDbSettingProvider(config.GetSection("StoredProcedurePath").Value)
-            .Run();
+        try
+        {
+            DbSettingProviderManager.StartNewSession()
+                .WithSqlServer(config)
+                .UseDefaultDbSettingProvider("App_Data", true)
+                .Run();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
     }
 
     public static void InternalServiceRegister(this IServiceCollection services)
@@ -73,5 +72,6 @@ public static class ServiceCollectionExtensions
         services.AddSingleton<MailService, MailServiceImp>();
 
         Services = services;
+        MailClientHandler.Start();
     }
 }

@@ -1,4 +1,4 @@
-FROM hub.nexdev.net/base/dotnet/core/sdk:7.0 AS builder
+FROM hub.nexdev.net/base/dotnet/core/sdk:8.0-alpine AS builder
 WORKDIR /src
 
 COPY ./Fanex.COPullData.Service/Fanex.COPullData.Business ./Fanex.COPullData.Business
@@ -13,7 +13,7 @@ COPY ./Fanex.COPullData.Service/Fanex.COPullData.Service .
 
 RUN dotnet publish -r linux-x64 --self-contained false -c Release -o /app
 
-FROM hub.nexdev.net/rebuild-baseimage/dotnetcore/aspnet:7.0-nap-mail-core
+FROM hub.nexdev.net/base/dotnet/core/aspnet:8.0-nap-mail-core
 
 
 
@@ -26,9 +26,6 @@ USER dotnetuser
 
 ENV TZ="America/La_Paz"
 ENV COMPlus_EnableDiagnostics=0
-
-ENV HTTP_PROXY="http://lisasqd.nebula.prod:8801"
-ENV HTTPS_PROXY="http://lisasqd.nebula.prod:8801"
 
 WORKDIR /app
 COPY --from=builder /app .
