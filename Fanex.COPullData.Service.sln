@@ -7,10 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.COPullData.Service", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fanex.COPullData.Business", "Fanex.COPullData.Service\Fanex.COPullData.Business\Fanex.COPullData.Business.csproj", "{342050DA-E16D-46C4-8CC7-AB5E119B7850}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{555C77B5-DC3C-42C5-AB1C-FBAFEB289969}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.COPullData.Business.Tests", "tests\Fanex.COPullData.Business.Tests\Fanex.COPullData.Business.Tests.csproj", "{D2E88A5F-7D68-43B9-9DBC-0C3D02BFB289}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,16 +21,9 @@ Global
 		{342050DA-E16D-46C4-8CC7-AB5E119B7850}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{342050DA-E16D-46C4-8CC7-AB5E119B7850}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{342050DA-E16D-46C4-8CC7-AB5E119B7850}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D2E88A5F-7D68-43B9-9DBC-0C3D02BFB289}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D2E88A5F-7D68-43B9-9DBC-0C3D02BFB289}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D2E88A5F-7D68-43B9-9DBC-0C3D02BFB289}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D2E88A5F-7D68-43B9-9DBC-0C3D02BFB289}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{D2E88A5F-7D68-43B9-9DBC-0C3D02BFB289} = {555C77B5-DC3C-42C5-AB1C-FBAFEB289969}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9C3C03FE-0095-4BBB-9B79-5338AF6BEE13}

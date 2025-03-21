@@ -1,27 +1,33 @@
 using Fanex.COPullData.Service;
+using Fanex.Data.SqlServer;
+using Fanex.Logging.Sentry.RavenClient;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers();
-builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
-builder.Services.AddRazorPages();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-builder.Services.LoadConfiguration();
-builder.Services.SentryRegister();
-builder.Services.FanexDataRegister(builder.Configuration);
-builder.Services.InternalServiceRegister();
+var services = builder.Services;
+var configuration = builder.Configuration;
+
+services.AddControllers();
+services.AddEndpointsApiExplorer();
+services.AddSwaggerGen();
+services.AddConfig();
+services.AddFanexLogSentry(configuration);
+services.AddFanexSql(configuration);
+services.AddInternalServices();
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+
+// Configure the HTTP request pipeline
+app.UseDeveloperExceptionPage();
+app.UseSwagger();
+app.UseSwaggerUI();
+
+app.UseRouting();
 
 app.MapControllers();
-app.Run();
+
+await app.RunAsync();
