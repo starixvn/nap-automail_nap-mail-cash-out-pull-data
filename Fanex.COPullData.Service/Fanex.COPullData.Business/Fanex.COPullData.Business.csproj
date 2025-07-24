@@ -8,6 +8,9 @@
     <Content Remove="C:\Users\robert.tran\.nuget\packages\fanex.mailstation\2.1.2\contentFiles\any\net8.0\app.config.transform" />
     <Content Remove="C:\Users\robert.tran\.nuget\packages\fanex.mailstation\2.1.2\contentFiles\any\net8.0\appsettings.json" />
     <Content Remove="C:\Users\robert.tran\.nuget\packages\fanex.mailstation\2.1.2\contentFiles\any\net8.0\web.config.transform" />
+    <Content Remove="C:\Users\robert.tran\.nuget\packages\fanex.mailstation\2.1.2\contentFiles\any\net9.0\app.config.transform" />
+    <Content Remove="C:\Users\robert.tran\.nuget\packages\fanex.mailstation\2.1.2\contentFiles\any\net9.0\appsettings.json" />
+    <Content Remove="C:\Users\robert.tran\.nuget\packages\fanex.mailstation\2.1.2\contentFiles\any\net9.0\web.config.transform" />
   </ItemGroup>
 
   <ItemGroup>
