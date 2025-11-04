@@ -28,7 +28,8 @@ namespace Fanex.COPullData.Business.Services
 
         private static void AssignTitle(ExcelWorksheet sheet, DateTime beginDate, DateTime endDate)
         {
-            sheet.Cells["B2"].Value = $"Daily JackTime Report Data From {beginDate:dd MMM, yyyy} To {endDate:dd MMM, yyyy}";
+            sheet.Cells["B2"].Value =
+                $"Daily JackTime Report Data From {beginDate:dd MMM, yyyy} To {endDate:dd MMM, yyyy}";
             sheet.Cells["B3"].Value = $"Generated on {DateTimeOffset.Now.DateTime:dd MMM yyy HH:mm:ss tt}";
         }
 
@@ -54,7 +55,7 @@ namespace Fanex.COPullData.Business.Services
 
         private static string Save(ExcelPackage excelPackage, DateTime beginDate, DateTime endDate)
         {
-            var path = $"{AppConfigService.Config.Path}/{DateTime.Today:yyyyMMdd}";
+            var path = $"{AppConfigService.Config.Path}/{DateTimeOffset.Now:yyyyMMdd}";
             Directory.CreateDirectory(path);
             var fileName = $"Daily_JackTime_Report_Data_From_{beginDate:yyyy_MM_dd}_To_{endDate:yyyy_MM_dd}.xlsx";
             path += $"/{fileName}";

@@ -1,19 +1,12 @@
-﻿using Fanex.COPullData.Business.Models;
+﻿using System;
+using System.IO;
+using Fanex.COPullData.Business.Models;
 using Fanex.COPullData.Business.Services;
-using Fanex.Data;
 using Fanex.Data.Repository;
-using Fanex.Data.SqlServer;
-using Fanex.Logging;
-using Fanex.Logging.Sentry.RavenClient;
 using Fanex.MailDelivery.Client;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using OfficeOpenXml;
-using SharpRaven;
-using System;
-using System.Collections.Generic;
-using System.IO;
 
 namespace Fanex.COPullData.Service;
 

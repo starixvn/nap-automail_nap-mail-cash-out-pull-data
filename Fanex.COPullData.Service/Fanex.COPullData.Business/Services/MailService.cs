@@ -39,10 +39,11 @@ public class MailServiceImp : MailService
     {
         var template = File.ReadAllText(@"Templates/EmailTemplate.cshtml");
         var tuple = new Tuple<bool, List<string>>(hasData, fileName);
+        var modelType = typeof(Tuple<bool, List<string>>);
         const string tplKey = "Fanex.COPullData.Service";
-        var result = Engine.Razor.IsTemplateCached(tplKey, null)
-            ? Engine.Razor.Run(tplKey, null, tuple)
-            : Engine.Razor.RunCompile(template, tplKey, model: tuple);
+        var result = Engine.Razor.IsTemplateCached(tplKey, modelType)
+            ? Engine.Razor.Run(tplKey, modelType, tuple)
+            : Engine.Razor.RunCompile(template, tplKey, modelType, tuple);
 
         return result;
     }
